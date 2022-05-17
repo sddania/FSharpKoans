@@ -77,3 +77,5 @@ module ``about tuples`` =
             (x ** 2.0, x ** 3.0)
             
         let result = squareAndCube 3.0
+       
+        AssertEquality result (9.0, 27.0)
