@@ -4,16 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "command": "dotnet build",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        },
-        {
             "label": "watch",
             "command": "dotnet",
             "type": "process",

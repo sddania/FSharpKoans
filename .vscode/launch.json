@@ -5,15 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Launch Koans (.Net Core, Console)",
             "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "watch",
+            "request": "build",
+            "preLaunchTask": "build",
             "program": "${workspaceRoot}/FSharpKoans/bin/Debug/net6.0/FSharpKoans.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FSharpKoans",
-            "stopAtEntry": false
-        }
-        
+            "cwd": "${workspaceRoot}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }        
     ]
 }
