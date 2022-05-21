@@ -1,5 +1,7 @@
 ﻿namespace FSharpKoans
 open FSharpKoans.Core
+open System
+open System.Globalization
 
 //---------------------------------------------------------------
 // Apply Your Knowledge!
@@ -27,7 +29,7 @@ open FSharpKoans.Core
 //---------------------------------------------------------------
 [<Koan(Sort = 15)>]
 module ``about the stock example`` =
-    
+
     let stockData =
         [ "Date,Open,High,Low,Close,Volume,Adj Close";
           "2012-03-30,32.40,32.41,32.04,32.26,31749400,32.26";
@@ -58,8 +60,38 @@ module ``about the stock example`` =
     // tests for yourself along the way. You can also try 
     // using the F# Interactive window to check your progress.
 
+    let splitCommas (x:string) =
+        x.Split([|','|])
+
+    type RowData = { 
+        Date: string; 
+        Open: float;
+        Close: float;
+    }
+
+    let parseDouble (x: string) =
+        Double.Parse(x, CultureInfo.InvariantCulture)
+
+    let parseRowData (x: string[]): RowData =
+        { 
+            Date = x.[0]
+            Open = x.[1] |> parseDouble
+            Close = x.[4] |> parseDouble
+        } 
+
+    let parseRow (x:string): RowData = 
+        x
+        |> splitCommas
+        |> parseRowData   
+
+    let getMaxDifferenceBetweenOpeningAndClosing (x: RowData): double = 
+        abs (x.Open - x.Close)
+
     [<Koan>]
     let YouGotTheAnswerCorrect() =
-        let result =  __
+        let result = 
+            stockData.Tail
+            |> List.map parseRow 
+            |> List.maxBy getMaxDifferenceBetweenOpeningAndClosing
         
-        AssertEquality "2012-03-13" result
+        AssertEquality "2012-03-13" result.Date
