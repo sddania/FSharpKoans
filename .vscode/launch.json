@@ -7,7 +7,7 @@
         {
             "name": "Launch Koans (.Net Core, Console)",
             "type": "coreclr",
-            "request": "build",
+            "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceRoot}/FSharpKoans/bin/Debug/net6.0/FSharpKoans.dll",
             "args": [],
